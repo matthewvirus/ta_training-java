@@ -1,8 +1,7 @@
-package bring_it_on.test;
+package com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.test;
 
-import bring_it_on.model.PasteBinModel;
-import bring_it_on.page.PasteBinNoteCreatingPage;
-import bring_it_on.page.PasteBinNotePage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.model.PasteBinModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.page.PasteBinNoteCreatingPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
@@ -11,7 +10,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class WebDriverPasteBinTest {
-
     private WebDriver driver;
     private static final String SOURCE_TEXT = """
             git config --global user.name  "New Sheriff in Town"
@@ -19,9 +17,8 @@ public class WebDriverPasteBinTest {
             git push origin master --force""";
     private static final String TEXT_HIGHLIGHTING = "Bash";
     private static final String PASTE_EXPIRATION_TIME = "10 Minutes";
-    private static final String PASTE_EXPIRATION_TIME_SHORT = "10 min";
     private static final String PASTE_TITLE = "how to gain dominance among developers";
-    PasteBinModel pasteBinModel = new PasteBinModel(
+    private final PasteBinModel pasteBinModel = new PasteBinModel(
             SOURCE_TEXT,
             PASTE_EXPIRATION_TIME,
             TEXT_HIGHLIGHTING,
@@ -34,13 +31,30 @@ public class WebDriverPasteBinTest {
     }
 
     @Test
-    public void pageTitleCorrespondsToPasteNameTest() {
+    public void pageTitleCorrespondsToGivenTest() {
         String currentPageTitleText = new PasteBinNoteCreatingPage(driver)
                 .openPage()
                 .createNewPaste(pasteBinModel)
                 .getTitleOnPage();
-        System.out.println(currentPageTitleText);
         Assert.assertTrue(currentPageTitleText.equalsIgnoreCase(PASTE_TITLE));
+    }
+
+    @Test
+    public void syntaxHighlightingCorrespondsToGivenTest() {
+        String currentSyntaxHighlightingTypeText = new PasteBinNoteCreatingPage(driver)
+                .openPage()
+                .createNewPaste(pasteBinModel)
+                .getSyntaxHighlightingType();
+        Assert.assertTrue(currentSyntaxHighlightingTypeText.equalsIgnoreCase(TEXT_HIGHLIGHTING));
+    }
+
+    @Test
+    public void resultPasteTextCorrespondsToGivenTest() {
+        String currentPasteText = new PasteBinNoteCreatingPage(driver)
+                .openPage()
+                .createNewPaste(pasteBinModel)
+                .getSourceText();
+        Assert.assertTrue(currentPasteText.contentEquals(TEXT_HIGHLIGHTING));
     }
 
     @AfterMethod()

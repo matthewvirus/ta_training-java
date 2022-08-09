@@ -1,4 +1,4 @@
-package i_can_win.page;
+package com.epam.training.Matthew_Zhigalo.WebDriver.i_can_win.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

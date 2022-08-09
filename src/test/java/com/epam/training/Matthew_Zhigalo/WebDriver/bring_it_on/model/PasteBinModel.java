@@ -1,4 +1,4 @@
-package bring_it_on.model;
+package com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.model;
 
 import java.util.Objects;
 

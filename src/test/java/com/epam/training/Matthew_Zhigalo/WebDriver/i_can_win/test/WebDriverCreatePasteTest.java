@@ -1,6 +1,6 @@
-package i_can_win.test;
+package com.epam.training.Matthew_Zhigalo.WebDriver.i_can_win.test;
 
-import i_can_win.page.PasteBinMainNotePage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.i_can_win.page.PasteBinMainNotePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;

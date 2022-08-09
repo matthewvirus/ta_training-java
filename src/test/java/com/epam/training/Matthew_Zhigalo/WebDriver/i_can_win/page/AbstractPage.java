@@ -1,4 +1,4 @@
-package bring_it_on.page;
+package com.epam.training.Matthew_Zhigalo.WebDriver.i_can_win.page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -6,7 +6,6 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class AbstractPage {
 
     protected WebDriver driver;
-    protected static final int WAITING_TIME = 10;
     protected abstract AbstractPage openPage();
 
     public AbstractPage(WebDriver driver) {

@@ -1,6 +1,6 @@
-package bring_it_on.page;
+package com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.page;
 
-import bring_it_on.model.PasteBinModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.model.PasteBinModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
