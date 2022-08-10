@@ -6,10 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class PasteBinNotePage extends AbstractPage{
-
-    private static final String regularExpression = " - Pastebin.com";
-
+public class PasteBinNotePage extends AbstractPage {
     @FindBy(css = ".info-top > h1")
     private WebElement pageTitle;
 

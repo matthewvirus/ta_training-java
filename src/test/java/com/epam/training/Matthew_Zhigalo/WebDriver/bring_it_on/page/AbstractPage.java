@@ -2,6 +2,7 @@ package com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -13,8 +14,10 @@ public abstract class AbstractPage {
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
-        PageFactory.initElements(driver, this);
+    }
+
+    protected WebDriverWait webDriverWait() {
+        return new WebDriverWait(driver, Duration.ofSeconds(WAITING_TIME));
     }
 
 }

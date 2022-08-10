@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
@@ -35,26 +35,33 @@ public class PasteBinNoteCreatingPage extends AbstractPage {
 
     public PasteBinNoteCreatingPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @Override
     public PasteBinNoteCreatingPage openPage() {
-        driver.get(MAIN_PAGE_URL);
+        driver.navigate().to(MAIN_PAGE_URL);
         return this;
     }
 
     public PasteBinNotePage createNewPaste(PasteBinModel pasteBinModel) {
-        inputPasteField.sendKeys(pasteBinModel.getPasteText());
+        inputPasteText(pasteBinModel.getPasteText());
         selectPasteExpiration(pasteBinModel.getExpirationTime());
-        pasteTitleField.sendKeys(pasteBinModel.getPasteTitle());
         selectSyntaxHighlighting(pasteBinModel.getTextHighlighting());
+        pasteTitleField.sendKeys(pasteBinModel.getPasteTitle());
         createNewPasteButton.click();
         return new PasteBinNotePage(driver);
     }
 
+    private void inputPasteText(String pasteText) {
+        inputPasteField.sendKeys(pasteText);
+    }
+
     private void selectPasteExpiration(String time) {
         pasteExpirationSelection.click();
-        List<WebElement> pasteExpirationList = getSelectionElements(driver, expirationTimeSelector);
+        List<WebElement> pasteExpirationList = webDriverWait()
+                .until(ExpectedConditions
+                        .presenceOfAllElementsLocatedBy(expirationTimeSelector));
         for (WebElement element : pasteExpirationList) {
             if (time.equalsIgnoreCase(element.getText())) {
                 element.click();
@@ -66,7 +73,9 @@ public class PasteBinNoteCreatingPage extends AbstractPage {
 
     private void selectSyntaxHighlighting(String textHighlighting) {
         syntaxHighlightingSelection.click();
-        List<WebElement> pasteExpirationList = getSelectionElements(driver, highlightingSelector);
+        List<WebElement> pasteExpirationList = webDriverWait()
+                .until(ExpectedConditions
+                        .presenceOfAllElementsLocatedBy(highlightingSelector));
         for (WebElement element : pasteExpirationList) {
             if (textHighlighting.equalsIgnoreCase(element.getText())) {
                 element.click();
@@ -74,12 +83,6 @@ public class PasteBinNoteCreatingPage extends AbstractPage {
             }
         }
         throw new RuntimeException("There is no same language in list.");
-    }
-
-    private List<WebElement> getSelectionElements(WebDriver driver, By selector) {
-        return new WebDriverWait(driver, Duration.ofSeconds(WAITING_TIME))
-                .until(ExpectedConditions
-                        .presenceOfAllElementsLocatedBy(selector));
     }
 
 }
