@@ -3,6 +3,7 @@ package com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.test;
 import com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.model.PasteBinModel;
 import com.epam.training.Matthew_Zhigalo.WebDriver.bring_it_on.page.PasteBinNoteCreatingPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -26,7 +27,7 @@ public class WebDriverPasteBinTest {
 
     @BeforeMethod()
     public void runBrowserSession() {
-        driver = new SafariDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
@@ -39,28 +40,28 @@ public class WebDriverPasteBinTest {
         Assert.assertTrue(currentPageTitleText.equalsIgnoreCase(PASTE_TITLE));
     }
 
-//    @Test
-//    public void syntaxHighlightingCorrespondsToGivenTest() {
-//        String currentSyntaxHighlightingTypeText = new PasteBinNoteCreatingPage(driver)
-//                .openPage()
-//                .createNewPaste(pasteBinModel)
-//                .getSyntaxHighlightingType();
-//        Assert.assertTrue(currentSyntaxHighlightingTypeText.equalsIgnoreCase(TEXT_HIGHLIGHTING));
-//    }
-//
-//    @Test
-//    public void resultPasteTextCorrespondsToGivenTest() {
-//        String currentPasteText = new PasteBinNoteCreatingPage(driver)
-//                .openPage()
-//                .createNewPaste(pasteBinModel)
-//                .getSourceText();
-//        Assert.assertTrue(currentPasteText.contentEquals(TEXT_HIGHLIGHTING));
-//    }
+    @Test
+    public void syntaxHighlightingCorrespondsToGivenTest() {
+        String currentSyntaxHighlightingTypeText = new PasteBinNoteCreatingPage(driver)
+                .openPage()
+                .createNewPaste(pasteBinModel)
+                .getSyntaxHighlightingType();
+        Assert.assertTrue(currentSyntaxHighlightingTypeText.equalsIgnoreCase(TEXT_HIGHLIGHTING));
+    }
+
+    @Test
+    public void resultPasteTextCorrespondsToGivenTest() {
+        String currentPasteText = new PasteBinNoteCreatingPage(driver)
+                .openPage()
+                .createNewPaste(pasteBinModel)
+                .getSourceText();
+        Assert.assertTrue(currentPasteText.contentEquals(TEXT_HIGHLIGHTING));
+    }
 
     @AfterMethod()
     public void closeBrowserSession() {
-//        driver.quit();
-//        driver = null;
+        driver.quit();
+        driver = null;
     }
 
 }
