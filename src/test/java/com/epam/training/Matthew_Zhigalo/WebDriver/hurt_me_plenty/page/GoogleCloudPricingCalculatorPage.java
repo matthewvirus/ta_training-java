@@ -1,5 +1,7 @@
 package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page;
 
+import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.model.CalculatorModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.service.CompletedCalculatorModel;
 import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.utils.DropdownUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -53,6 +55,8 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     @FindBy (css = ".md-title > b")
     private WebElement totalEstimatedCost;
 
+    private final CalculatorModel calculatorModel = CompletedCalculatorModel.completeCalculatorModel();
+
     public GoogleCloudPricingCalculatorPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -62,17 +66,17 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
         switchTo(wrapperFrameSelector)
                 .switchTo(innerFrameSelector)
                 .selectPresetType()
-                .inputNumberOfInstances("4")
-                .chooseOperatingSystem("Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)")
-                .chooseVMClass("Regular")
-                .chooseMachineSeries("N1")
-                .chooseInstanceType("n1-standard-8 (vCPUs: 8, RAM: 30GB)")
+                .inputNumberOfInstances(calculatorModel.getNumberOfInstances())
+                .chooseOperatingSystem(calculatorModel.getOperatingSystem())
+                .chooseVMClass(calculatorModel.getVmClass())
+                .chooseMachineSeries(calculatorModel.getMachineSeries())
+                .chooseInstanceType(calculatorModel.getInstanceType())
                 .selectAddGPUsCheckbox()
-                .chooseGPUType("NVIDIA Tesla T4")
-                .chooseNumberOfGPUs("1")
-                .chooseLocalSSDSize("2x375 GB")
-                .chooseDatacenterLocation("Frankfurt (europe-west3)")
-                .chooseCommittedUsage("1 Year")
+                .chooseGPUType(calculatorModel.getGpuType())
+                .chooseNumberOfGPUs(calculatorModel.getGpuNumber())
+                .chooseLocalSSDSize(calculatorModel.getSsdSize())
+                .chooseDatacenterLocation(calculatorModel.getRegion())
+                .chooseCommittedUsage(calculatorModel.getCommittedUsage())
                 .pressAddToEstimateButton();
         return this;
     }
@@ -189,8 +193,7 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
 
     @Override
     protected GoogleCloudPricingCalculatorPage openPage() {
-        System.out.println("Opened Google Cloud Pricing Calculator page.");
-        return this;
+        throw new RuntimeException("Opened the page with empty test data.");
     }
 
 }

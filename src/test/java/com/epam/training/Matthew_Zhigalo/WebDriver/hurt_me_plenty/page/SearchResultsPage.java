@@ -32,8 +32,7 @@ public class SearchResultsPage extends AbstractPage {
 
     @Override
     protected SearchResultsPage openPage() {
-        System.out.println("Opened Google Search ResultsTest");
-        return this;
+        throw new RuntimeException("Opened the page with empty test data.");
     }
 
 }
