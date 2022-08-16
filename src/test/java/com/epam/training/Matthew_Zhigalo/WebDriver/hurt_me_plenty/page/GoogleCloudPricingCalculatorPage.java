@@ -17,6 +17,8 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     private final By wrapperFrameSelector = By.cssSelector("#cloud-site > devsite-iframe > iframe");
     private final By innerFrameSelector = By.cssSelector("#myFrame");
     private final By presetSelectionXpath = By.xpath("//div[contains(@title, 'Compute Engine')]");
+    private final By emailEstimateFormSelector = By.cssSelector("md-dialog > form[name='emailForm']");
+    private final By sendEmailButton = By.cssSelector("button[aria-label='Send Email']");
 
     @FindBy (xpath = "//*[@id='input_87']")
     private WebElement numberOfInstancesTextField;
@@ -54,6 +56,10 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     private WebElement localSSDTextArea;
     @FindBy (css = ".md-title > b")
     private WebElement totalEstimatedCost;
+    @FindBy (css = "#email_quote")
+    private WebElement sendCostToEmailButton;
+    @FindBy (css = "input[type='email']")
+    private WebElement emailInputField;
 
     private final CalculatorModel calculatorModel = CompletedCalculatorModel.completeCalculatorModel();
 
@@ -79,6 +85,14 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
                 .chooseCommittedUsage(calculatorModel.getCommittedUsage())
                 .pressAddToEstimateButton();
         return this;
+    }
+
+    public void sendEstimatedCostToEmail(String email) {
+        switchTo(wrapperFrameSelector)
+                .switchTo(innerFrameSelector)
+                .clickOnEmailFormButton()
+                .insertGeneratedEmail(email)
+                .sendEmail();
     }
 
     private GoogleCloudPricingCalculatorPage switchTo(By selector) {
@@ -189,6 +203,26 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
 
     public String getTotalEstimatedCost() {
         return totalEstimatedCost.getText();
+    }
+
+    private GoogleCloudPricingCalculatorPage clickOnEmailFormButton() {
+        sendCostToEmailButton.click();
+        webDriverWait()
+                .until(ExpectedConditions
+                        .presenceOfElementLocated(emailEstimateFormSelector));
+        return this;
+    }
+
+    private GoogleCloudPricingCalculatorPage insertGeneratedEmail(String email) {
+        emailInputField.sendKeys(email);
+        return this;
+    }
+
+    private void sendEmail() {
+        webDriverWait()
+                .until(ExpectedConditions
+                        .elementToBeClickable(sendEmailButton))
+                .click();
     }
 
     @Override

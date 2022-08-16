@@ -1,15 +1,22 @@
 package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.test;
 
+import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.YopmailGeneratedEmailPage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.YopmailInboxPage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.YopmailMainPage;
 import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.model.TestModel;
 import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.GoogleCloudMainPage;
 import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.GoogleCloudPricingCalculatorPage;
 import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.service.CompletedTestModel;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateVirtualComputeEngineTest {
 
@@ -42,6 +49,31 @@ public class CreateVirtualComputeEngineTest {
                 .contains(testModel.getSsdSize()));
         Assert.assertTrue(pricingCalculatorPage.getTotalEstimatedCost()
                 .contains(testModel.getEstimatedCost()));
+    }
+
+    @Test (description = "This test check if total estimated cost corresponds to cost from email")
+    public void emailEstimatedCostCorrespondToCostFromFormTest() {
+        String priceOnPricingCalculatorPage = pricingCalculatorPage.getTotalEstimatedCost();
+        ((JavascriptExecutor)driver).executeScript("window.open()");
+        List<String> openedTabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(openedTabs.get(1));
+
+        YopmailGeneratedEmailPage yopmailGeneratedEmailPage = new YopmailMainPage(driver)
+                .openPage()
+                .generateNewMail();
+        String email = yopmailGeneratedEmailPage.getGeneratedEmail();
+        YopmailInboxPage yopmailInboxPage = yopmailGeneratedEmailPage.checkForInboxMessages();
+
+        driver.switchTo().window(openedTabs.get(0));
+
+        pricingCalculatorPage.sendEstimatedCostToEmail(email);
+
+        driver.switchTo().window(openedTabs.get(1));
+
+        String estimatedCostFromMail = yopmailInboxPage
+                .goToMessage()
+                .getEstimatedCostFromEmail();
+        Assert.assertTrue(priceOnPricingCalculatorPage.contains(estimatedCostFromMail));
     }
 
     @AfterMethod()
