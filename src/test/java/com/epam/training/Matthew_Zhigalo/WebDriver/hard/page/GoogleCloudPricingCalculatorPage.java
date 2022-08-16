@@ -17,6 +17,7 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     private final By wrapperFrameSelector = By.cssSelector("#cloud-site > devsite-iframe > iframe");
     private final By innerFrameSelector = By.cssSelector("#myFrame");
     private final By presetSelectionXpath = By.xpath("//div[contains(@title, 'Compute Engine')]");
+    private final By typeOfGPUDropdown = By.cssSelector("md-select[aria-label^='GPU type']");
     private final By emailEstimateFormSelector = By.cssSelector("md-dialog > form[name='emailForm']");
     private final By sendEmailButton = By.cssSelector("button[aria-label='Send Email']");
 
@@ -32,8 +33,6 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     private WebElement instanceTypeDropdown;
     @FindBy (css = "md-checkbox[aria-label^='Add GPUs']")
     private WebElement addGPUsCheckbox;
-    @FindBy (css = "md-select[aria-label^='GPU type']")
-    private WebElement typeOfGPUDropdown;
     @FindBy (css = "md-select[aria-label^='Number of GPUs']")
     private WebElement numberOfGPUsDropdown;
     @FindBy (css = "md-select[aria-label^='Local SSD']")
@@ -145,7 +144,10 @@ public class GoogleCloudPricingCalculatorPage extends AbstractPage {
     }
 
     private GoogleCloudPricingCalculatorPage chooseGPUType(String typeOfGPU) {
-        typeOfGPUDropdown.click();
+        webDriverWait()
+                .until(ExpectedConditions
+                        .presenceOfElementLocated(typeOfGPUDropdown))
+                .click();
         DropdownUtils.clickOnDropdownListElement(String.format(DROPDOWN_XPATH, typeOfGPU));
         return this;
     }

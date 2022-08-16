@@ -1,7 +1,6 @@
 package com.epam.training.Matthew_Zhigalo.WebDriver.hard.service;
 
 import com.epam.training.Matthew_Zhigalo.WebDriver.hard.model.CalculatorModel;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hard.utils.PropertiesUtils;
 
 public class CompletedCalculatorModel {
 
@@ -18,16 +17,16 @@ public class CompletedCalculatorModel {
 
     public static CalculatorModel completeCalculatorModel() {
         CalculatorModel calculatorModel = new CalculatorModel();
-        calculatorModel.setNumberOfInstances(PropertiesUtils.getData(NUMBER_OF_INSTANCES));
-        calculatorModel.setOperatingSystem(PropertiesUtils.getData(OPERATING_SYSTEM));
-        calculatorModel.setVmClass(PropertiesUtils.getData(VM_CLASS));
-        calculatorModel.setMachineSeries(PropertiesUtils.getData(MACHINE_SERIES));
-        calculatorModel.setInstanceType(PropertiesUtils.getData(INSTANCE_TYPE));
-        calculatorModel.setGpuType(PropertiesUtils.getData(GPU_TYPE));
-        calculatorModel.setGpuNumber(PropertiesUtils.getData(GPU_NUMBER));
-        calculatorModel.setSsdSize(PropertiesUtils.getData(SSD_SIZE));
-        calculatorModel.setRegion(PropertiesUtils.getData(REGION));
-        calculatorModel.setCommittedUsage(PropertiesUtils.getData(COMMITTED_USAGE));
+        calculatorModel.setNumberOfInstances(TestDataReader.getTestData(NUMBER_OF_INSTANCES));
+        calculatorModel.setOperatingSystem(TestDataReader.getTestData(OPERATING_SYSTEM));
+        calculatorModel.setVmClass(TestDataReader.getTestData(VM_CLASS));
+        calculatorModel.setMachineSeries(TestDataReader.getTestData(MACHINE_SERIES));
+        calculatorModel.setInstanceType(TestDataReader.getTestData(INSTANCE_TYPE));
+        calculatorModel.setGpuType(TestDataReader.getTestData(GPU_TYPE));
+        calculatorModel.setGpuNumber(TestDataReader.getTestData(GPU_NUMBER));
+        calculatorModel.setSsdSize(TestDataReader.getTestData(SSD_SIZE));
+        calculatorModel.setRegion(TestDataReader.getTestData(REGION));
+        calculatorModel.setCommittedUsage(TestDataReader.getTestData(COMMITTED_USAGE));
         return calculatorModel;
     }
 

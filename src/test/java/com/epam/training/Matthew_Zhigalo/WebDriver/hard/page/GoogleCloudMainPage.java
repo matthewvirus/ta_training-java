@@ -1,5 +1,7 @@
 package com.epam.training.Matthew_Zhigalo.WebDriver.hard.page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class GoogleCloudMainPage extends AbstractPage {
 
     private static final String CLOUD_MAIN_PAGE_URL = "https://cloud.google.com/";
+    private final Logger logger = LogManager.getRootLogger();
     private final By searchFieldCssSelector = By.cssSelector(".devsite-searchbox > input");
 
     public GoogleCloudMainPage(WebDriver driver) {
@@ -28,6 +31,7 @@ public class GoogleCloudMainPage extends AbstractPage {
     @Override
     public GoogleCloudMainPage openPage() {
         driver.navigate().to(CLOUD_MAIN_PAGE_URL);
+        logger.info("Opened page " + CLOUD_MAIN_PAGE_URL);
         return this;
     }
 

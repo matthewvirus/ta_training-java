@@ -1,5 +1,7 @@
 package com.epam.training.Matthew_Zhigalo.WebDriver.hard.page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,7 @@ import java.util.List;
 public class SearchResultsPage extends AbstractPage {
 
     private final String searchTerm;
+    private final Logger logger = LogManager.getRootLogger();
     private final By resultsLinks = By.cssSelector(".gs-title > a");
 
     public SearchResultsPage(WebDriver driver, String searchTerm) {
@@ -32,7 +35,8 @@ public class SearchResultsPage extends AbstractPage {
 
     @Override
     protected SearchResultsPage openPage() {
-        throw new RuntimeException("Opened the page with empty test data.");
+        logger.info("Opened search results page.");
+        return this;
     }
 
 }

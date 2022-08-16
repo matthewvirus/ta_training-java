@@ -1,7 +1,6 @@
 package com.epam.training.Matthew_Zhigalo.WebDriver.hard.service;
 
 import com.epam.training.Matthew_Zhigalo.WebDriver.hard.model.TestModel;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hard.utils.PropertiesUtils;
 
 public class CompletedTestModel {
 
@@ -14,12 +13,12 @@ public class CompletedTestModel {
 
     public static TestModel completeTestModel() {
         TestModel testModel = new TestModel();
-        testModel.setRegion(PropertiesUtils.getData(REGION));
-        testModel.setCommitmentTerm(PropertiesUtils.getData(COMMITTED_TERM));
-        testModel.setVmClass(PropertiesUtils.getData(VM_CLASS));
-        testModel.setInstanceType(PropertiesUtils.getData(INSTANCE_TYPE));
-        testModel.setSsdSize(PropertiesUtils.getData(SSD_SIZE));
-        testModel.setEstimatedCost(PropertiesUtils.getData(ESTIMATED_COST));
+        testModel.setRegion(TestDataReader.getTestData(REGION));
+        testModel.setCommitmentTerm(TestDataReader.getTestData(COMMITTED_TERM));
+        testModel.setVmClass(TestDataReader.getTestData(VM_CLASS));
+        testModel.setInstanceType(TestDataReader.getTestData(INSTANCE_TYPE));
+        testModel.setSsdSize(TestDataReader.getTestData(SSD_SIZE));
+        testModel.setEstimatedCost(TestDataReader.getTestData(ESTIMATED_COST));
         return testModel;
     }
 
