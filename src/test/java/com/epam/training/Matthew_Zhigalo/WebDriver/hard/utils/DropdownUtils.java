@@ -1,10 +1,10 @@
-package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.utils;
+package com.epam.training.Matthew_Zhigalo.WebDriver.hard.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.AbstractPage.webDriverWait;
+import static com.epam.training.Matthew_Zhigalo.WebDriver.hard.page.AbstractPage.webDriverWait;
 
 public class DropdownUtils {
 

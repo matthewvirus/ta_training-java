@@ -1,4 +1,4 @@
-package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.model;
+package com.epam.training.Matthew_Zhigalo.WebDriver.hard.model;
 
 import lombok.Data;
 

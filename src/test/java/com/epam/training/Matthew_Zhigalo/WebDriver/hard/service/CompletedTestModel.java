@@ -1,7 +1,7 @@
-package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.service;
+package com.epam.training.Matthew_Zhigalo.WebDriver.hard.service;
 
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.model.TestModel;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.utils.PropertiesUtils;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.model.TestModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.utils.PropertiesUtils;
 
 public class CompletedTestModel {
 

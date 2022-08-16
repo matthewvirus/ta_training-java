@@ -1,4 +1,4 @@
-package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.utils;
+package com.epam.training.Matthew_Zhigalo.WebDriver.hard.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

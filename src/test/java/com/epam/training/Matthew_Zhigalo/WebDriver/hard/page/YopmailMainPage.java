@@ -1,4 +1,4 @@
-package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page;
+package com.epam.training.Matthew_Zhigalo.WebDriver.hard.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

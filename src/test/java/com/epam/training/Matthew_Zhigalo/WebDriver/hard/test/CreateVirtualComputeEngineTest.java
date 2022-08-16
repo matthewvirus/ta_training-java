@@ -1,12 +1,12 @@
-package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.test;
+package com.epam.training.Matthew_Zhigalo.WebDriver.hard.test;
 
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.YopmailGeneratedEmailPage;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.YopmailInboxPage;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.YopmailMainPage;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.model.TestModel;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.GoogleCloudMainPage;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page.GoogleCloudPricingCalculatorPage;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.service.CompletedTestModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.page.YopmailGeneratedEmailPage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.page.YopmailInboxPage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.page.YopmailMainPage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.model.TestModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.page.GoogleCloudMainPage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.page.GoogleCloudPricingCalculatorPage;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.service.CompletedTestModel;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

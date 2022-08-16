@@ -1,8 +1,8 @@
-package com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.page;
+package com.epam.training.Matthew_Zhigalo.WebDriver.hard.page;
 
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.model.CalculatorModel;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.service.CompletedCalculatorModel;
-import com.epam.training.Matthew_Zhigalo.WebDriver.hurt_me_plenty.utils.DropdownUtils;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.model.CalculatorModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.service.CompletedCalculatorModel;
+import com.epam.training.Matthew_Zhigalo.WebDriver.hard.utils.DropdownUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
